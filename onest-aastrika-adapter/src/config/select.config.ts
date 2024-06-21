@@ -1,6 +1,6 @@
 import { ItemSchema } from './base.config';
 
-const selectItemSchema: ItemSchema = {
+const itemSchema: ItemSchema = {
     identifier: 'id',
     code: 'descriptor.id',
     name: 'descriptor.name',
@@ -20,11 +20,11 @@ const selectItemSchema: ItemSchema = {
     'tags[]': [{ key: 'tags.list[].value' }],
 };
 
-const selectUrlConfig = {
+const urlConfig = {
     url: 'https://aastrika-stage.tarento.com/apis/proxies/v8/action/content/v3/hierarchy/{{doId}}?hierarchyType=detail',
     headers: {
         "Cookie": ''
     }
 };
 
-export { selectItemSchema, selectUrlConfig };
+export { itemSchema, urlConfig };

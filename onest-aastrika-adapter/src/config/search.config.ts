@@ -1,6 +1,6 @@
 import { ItemSchema } from './base.config';
 
-const searchItemSchema: ItemSchema = {
+const itemSchema: ItemSchema = {
     identifier: 'id',
     code: 'descriptor.id',
     name: 'descriptor.name',
@@ -20,7 +20,7 @@ const searchItemSchema: ItemSchema = {
     'tags[]': [{ key: 'tags.list[].value' }],
 };
 
-const searchUrlConfig = {
+const urlConfig = {
     url: 'https://aastrika-stage.tarento.com/apis/public/v8/courseRecommendation/publicSearch/getcourse',
     headers: {
         'Content-Type': 'application/json'
@@ -31,4 +31,4 @@ const searchUrlConfig = {
     }
 };
 
-export { searchItemSchema, searchUrlConfig };
+export { itemSchema, urlConfig };

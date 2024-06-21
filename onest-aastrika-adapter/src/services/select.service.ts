@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import * as objectMapper from 'object-mapper';
 import { providerSchema } from '../config/base.config';
-import { selectItemSchema, selectUrlConfig } from '../config/select.config';
+import { itemSchema, urlConfig } from '../config/search.config';
 import { BaseService } from './base.service';
 
 @Injectable()
@@ -22,9 +22,9 @@ export class SelectService extends BaseService {
     console.log(bapUrl)
 
     try {
-      const selectUrl = selectUrlConfig.url.replace('{{doId}}', doId);
-      const data = await this.makeApiRequest({ ...selectUrlConfig, url: selectUrl });
-      const item = objectMapper(data.result.content, selectItemSchema);
+      const selectUrl = urlConfig.url.replace('{{doId}}', doId);
+      const data = await this.makeApiRequest({ ...urlConfig, url: selectUrl });
+      const item = objectMapper(data.result.content, itemSchema);
       const itemArray = Array.isArray(item) ? item : [item];
       const providerData = { ...providerSchema, items: itemArray };
       const orderMessage = {

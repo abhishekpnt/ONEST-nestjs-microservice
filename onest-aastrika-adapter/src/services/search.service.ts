@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import * as lodash from 'lodash';
 import * as objectMapper from 'object-mapper';
 import { providerSchema, responsePath } from '../config/base.config';
-import { searchItemSchema, searchUrlConfig } from '../config/search.config';
+import { itemSchema, urlConfig } from '../config/search.config';
 
 import { BaseService } from './base.service';
 
@@ -25,9 +25,9 @@ export class SearchService extends BaseService {
          throw new Error('BAP URL not provided in context');
        }
  
-      const data = await this.makeApiRequest(searchUrlConfig);
+      const data = await this.makeApiRequest(urlConfig);
       const itemArray = lodash.get(data, responsePath).map(item =>
-        objectMapper(item, searchItemSchema)
+        objectMapper(item, itemSchema)
       );
       const providerData = { ...providerSchema, items: itemArray };
 
